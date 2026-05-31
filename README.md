@@ -1,2 +1,641 @@
-# darsyar.ir
-درسیار
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>درس یار | همراه هوشمند یادگیری</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font: Vazir (وزیر) -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #f8fafc 0%, #eef2f7 100%);
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* اسکرول نرم و استایل */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 10px;
+        }
+
+        /* هدر و نویگیشن */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: #3b82f6;
+            filter: drop-shadow(0 2px 5px rgba(59,130,246,0.3));
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.7rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e293b;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a i {
+            font-size: 0.9rem;
+            color: #3b82f6;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .btn-login {
+            background: #3b82f6;
+            color: white !important;
+            padding: 8px 22px;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+        }
+
+        .btn-login:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(59,130,246,0.4);
+            color: white;
+        }
+
+        /* همبرگر موبایل */
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #1e293b;
+        }
+
+        /* بخش اصلی Hero */
+        .hero {
+            max-width: 1300px;
+            margin: 2rem auto 0;
+            padding: 2rem 2rem 4rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-text h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(to left, #0f172a, #1e40af);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #334155;
+            margin: 1.2rem 0 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-outline {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 6px 14px rgba(59,130,246,0.4);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            border: 2px solid #3b82f6;
+            color: #1e40af;
+        }
+
+        .btn-outline:hover {
+            background: #3b82f610;
+            transform: scale(1.02);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image i {
+            font-size: 16rem;
+            color: #3b82f6;
+            opacity: 0.8;
+            filter: drop-shadow(0 15px 20px rgba(0,0,0,0.1));
+        }
+
+        /* ویژگی‌ها */
+        .features {
+            background: white;
+            padding: 4rem 2rem;
+            border-radius: 60px 60px 0 0;
+            margin-top: 2rem;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.02);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: #3b82f6;
+            display: block;
+            margin: 12px auto 0;
+            border-radius: 10px;
+        }
+
+        .features-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: 2rem 1.5rem;
+            border-radius: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #3b82f640;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.7rem;
+        }
+
+        /* دروس محبوب */
+        .courses {
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .course-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-item {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            transition: 0.25s;
+            border: 1px solid #eef2ff;
+        }
+
+        .course-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 35px -12px rgba(59,130,246,0.2);
+        }
+
+        .course-img {
+            background: linear-gradient(145deg, #d9e6ff, #b9d3ff);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .course-img i {
+            font-size: 4rem;
+            color: #1e40af;
+        }
+
+        .course-info {
+            padding: 1.5rem;
+        }
+
+        .course-info h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .course-info p {
+            color: #475569;
+            margin: 0.5rem 0;
+        }
+
+        .badge {
+            background: #e6f0ff;
+            color: #1e40af;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 0.8rem;
+        }
+
+        /* تماس با ما */
+        .contact {
+            background: linear-gradient(120deg, #f1f5f9, #ffffff);
+            padding: 4rem 2rem;
+            border-radius: 50px;
+            max-width: 1000px;
+            margin: 2rem auto;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+            font-size: 1rem;
+            background: white;
+            transition: 0.2s;
+        }
+
+        .contact-form textarea {
+            border-radius: 28px;
+            resize: vertical;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px #3b82f620;
+        }
+
+        .contact-form button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        .contact-form button:hover {
+            background: #2563eb;
+            transform: scale(0.98);
+        }
+
+        /* فوتر */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 2rem 2rem 1rem;
+            margin-top: 3rem;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            margin: 8px 0;
+            transition: 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #3b82f6;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #1e293b;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+                background: white;
+                padding: 1rem 0;
+                margin-top: 1rem;
+                border-radius: 28px;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .hero-text h2 {
+                font-size: 2.2rem;
+            }
+            .hero-image i {
+                font-size: 10rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <h1>درس یار</h1>
+        </div>
+        <div class="menu-icon" id="menuIcon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home"><i class="fas fa-home"></i> خانه</a></li>
+            <li><a href="#features"><i class="fas fa-star"></i> ویژگی‌ها</a></li>
+            <li><a href="#courses"><i class="fas fa-book-open"></i> دروس</a></li>
+            <li><a href="#contact"><i class="fas fa-headset"></i> تماس با ما</a></li>
+            <li><a href="#" class="btn-login"><i class="fas fa-user-astronaut"></i> ورود / ثبت‌نام</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <!-- بخش Hero -->
+    <section id="home">
+        <div class="hero">
+            <div class="hero-text">
+                <h2>با درس یار، یادگیری آسان‌تر از همیشه</h2>
+                <p>همراه هوشمند دانش‌آموزان و کنکوری‌ها، ویدیوهای آموزشی، آزمون‌های آنلاین و برنامه‌ریزی شخصی</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">شروع رایگان <i class="fas fa-arrow-left"></i></a>
+                    <a href="#" class="btn-outline">مشاهده دوره‌ها</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-chalkboard-user"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ویژگی‌ها -->
+    <section id="features" class="features">
+        <div class="section-title">چرا درس یار؟</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-video"></i>
+                <h3>ویدیوهای تعاملی</h3>
+                <p>تدریس اساتید مجرب با انیمیشن و تمرین‌های جذاب</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>پیشرفت روزانه</h3>
+                <p>گزارش لحظه‌ای و تحلیل نقاط قوت و ضعف شما</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>گروه‌های رقابتی</h3>
+                <p>رقابت دوستانه با همکلاسی‌ها در آزمون‌ها</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>دسترسی در همه جا</h3>
+                <p>اپلیکیشن و وب‌سایت واکنش‌گرا، حتی آفلاین</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- دروس محبوب -->
+    <section id="courses" class="courses">
+        <div class="section-title">دوره‌های محبوب</div>
+        <div class="course-slider">
+            <div class="course-item">
+                <div class="course-img"><i class="fas fa-square-root-alt"></i></div>
+                <div class="course-info">
+                    <h4>ریاضیات کنکور</h4>
+                    <p>تدریس جامع و تکنیک‌های تست‌زنی پیشرفته</p>
+                    <span class="badge"><i class="fas fa-users"></i> ۳,۴۲۰+ دانش‌آموز</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-img"><i class="fas fa-flask"></i></div>
+                <div class="course-info">
+                    <h4>فیزیک پایه</h4>
+                    <p>آموزش مفهومی + شبیه‌ساز آزمایشگاه</p>
+                    <span class="badge"><i class="fas fa-fire"></i> محبوب‌ترین</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-img"><i class="fas fa-language"></i></div>
+                <div class="course-info">
+                    <h4>زبان انگلیسی</h4>
+                    <p>گرامر و واژگان به سبک فیلم و پادکست</p>
+                    <span class="badge"><i class="fas fa-star"></i> ویژه مبتدی تا پیشرفته</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-img"><i class="fas fa-laptop-code"></i></div>
+                <div class="course-info">
+                    <h4>برنامه‌نویسی Python</h4>
+                    <p>از صفر تا پروژه‌های عملی برای نوجوانان</p>
+                    <span class="badge"><i class="fas fa-gem"></i> جدید</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تماس با ما -->
+    <section id="contact" class="contact">
+        <div class="section-title" style="margin-bottom: 1.5rem;">با ما در ارتباط باش</div>
+        <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="نام و نام خانوادگی" required>
+            <input type="email" placeholder="ایمیل یا شماره موبایل" required>
+            <textarea rows="4" placeholder="سوال یا پیشنهاد شما ..."></textarea>
+            <button type="submit">ارسال پیام <i class="fas fa-paper-plane"></i></button>
+        </form>
+        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">پشتیبانی سریع در ساعات ۸ صبح تا ۱۰ شب</p>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h4><i class="fas fa-graduation-cap"></i> درس یار</h4>
+            <p>پلتفرم هوشمند آموزش آنلاین</p>
+            <div style="margin-top: 10px;">
+                <i class="fab fa-instagram"></i>  <i class="fab fa-telegram"></i>  <i class="fab fa-linkedin"></i>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>دسترسی سریع</h4>
+            <a href="#">درباره ما</a>
+            <a href="#">بلاگ آموزشی</a>
+            <a href="#">سوالات متداول</a>
+            <a href="#">قوانین</a>
+        </div>
+        <div class="footer-col">
+            <h4>تماس</h4>
+            <a href="tel:02112345678"><i class="fas fa-phone-alt"></i> ۰۲۱-۱۲۳۴۵۶۷۸</a>
+            <a href="mailto:support@darsyar.ir"><i class="fas fa-envelope"></i> support@darsyar.ir</a>
+        </div>
+    </div>
+    <div class="copyright">
+        © ۱۴۰۴ - تمامی حقوق برای درس یار محفوظ است. همراه همیشگی شما در مسیر موفقیت
+    </div>
+</footer>
+
+<script>
+    // منوی همبرگر برای موبایل
+    const menuIcon = document.getElementById('menuIcon');
+    const navLinks = document.getElementById('navLinks');
+
+    menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // بستن منو با کلیک روی لینک‌ها در موبایل
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if(window.innerWidth <= 800) navLinks.classList.remove('active');
+        });
+    });
+
+    // فرم تماس: نمایش پیام موفقیت (فقط برای دمو)
+    const contactForm = document.getElementById('contactForm');
+    if(contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('✅ پیام شما با موفقیت دریافت شد. کارشناسان درس یار به زودی پاسخ خواهند داد.');
+            contactForm.reset();
+        });
+    }
+</script>
+</body>
+</html>
